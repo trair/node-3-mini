@@ -17,7 +17,7 @@ class App extends Component {
   }
 
   componentDidMount() {
-    axios.get('/api/messages').then(res => {
+    axios.get('/api/messages').then((res) => {
       this.setState({ allMessages: res.data })
     })
   }
@@ -36,13 +36,12 @@ class App extends Component {
   }
 
   createMessage() {
-    axios.post('api/messages', {
+    axios.post('/api/messages', {
       username: this.state.username,
       message: this.state.message
+    }).then((res) => {
+      this.setState({ allMessages: res.data })
     })
-      .then(res => {
-        this.setState({ allMessages: res.data })
-      })
   }
 
   render() {
